@@ -1,0 +1,18 @@
+TLS Summary: Confidentiality and Integrity
+
+Transport Layer Security (TLS), the successor to SSL, provides secure communication over computer networks. It ensures confidentiality and integrity through the following mechanisms:
+
+1.  **Confidentiality**:
+    *   TLS ensures that the data exchanged between the client and server cannot be read by eavesdroppers.
+    *   This is achieved primarily through **symmetric encryption** (e.g., AES).
+    *   During the TLS handshake, the client and server securely negotiate a shared secret session key. This negotiation typically uses **asymmetric cryptography** (like RSA or Diffie-Hellman key exchange) to protect the key exchange process itself.
+    *   Once the session key is established, all subsequent application data (e.g., HTTP requests and responses) is encrypted using this symmetric key.
+
+2.  **Integrity**:
+    *   TLS ensures that the data has not been tampered with or altered during transmission.
+    *   This is achieved using **Message Authentication Codes (MACs)** or through **Authenticated Encryption with Associated Data (AEAD)** ciphers (like AES-GCM).
+    *   A MAC is calculated based on the message content and the shared secret session key. This MAC is appended to the message.
+    *   The receiver recalculates the MAC using the received message and its copy of the session key. If the calculated MAC matches the received MAC, the integrity of the message is verified.
+    *   AEAD ciphers (common in TLS 1.2 and mandatory in TLS 1.3) combine encryption and integrity verification into a single operation, providing strong security and often better performance.
+
+In summary, TLS uses a combination of asymmetric cryptography (for key exchange and authentication during the handshake) and symmetric cryptography (for efficient bulk data encryption and integrity protection) to provide a secure communication channel.

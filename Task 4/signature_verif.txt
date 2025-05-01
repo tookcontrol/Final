@@ -1,0 +1,22 @@
+PGP/GPG Signature Verification Explained
+
+When Bob receives a message signed by Alice using PGP/GPG, the verification process confirms both the authenticity of the sender and the integrity of the message content. Here's how it works:
+
+1.  **Signing (Alice)**:
+    *   Alice creates a hash (e.g., SHA-256) of her original message content.
+    *   She encrypts this hash using her **private key**. This encrypted hash is the digital signature.
+    *   The signature is attached to the original message (or the encrypted message if both signing and encryption are done).
+
+2.  **Verification (Bob)**:
+    *   Bob receives the message and the attached signature.
+    *   Bob uses Alice's **public key** (which he must have obtained previously and trust) to decrypt the signature. This reveals the original hash calculated by Alice.
+    *   Bob independently calculates a hash of the received message content using the *same hash algorithm* Alice used (e.g., SHA-256).
+    *   Bob compares the hash he calculated with the hash he decrypted from the signature.
+
+3.  **Validation**:
+    *   **Match**: If the two hashes match, the signature is valid. This proves:
+        *   **Authenticity**: Only someone with Alice's private key could have encrypted the original hash to create the signature that was successfully decrypted with Alice's public key. Therefore, the message came from Alice.
+        *   **Integrity**: Because the hash Bob calculated from the received message matches the hash Alice created from the original message (embedded in the signature), the message content has not been altered since Alice signed it.
+    *   **Mismatch**: If the hashes do not match, the signature is invalid. This indicates either the message was tampered with after signing, or the signature was not created with Alice's private key (or the wrong public key was used for verification).
+
+In essence, the signature links the sender (via their private key) to the specific state of the message content (via the hash) at the time of signing.

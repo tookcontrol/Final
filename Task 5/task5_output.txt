@@ -1,0 +1,21 @@
+Created 'original.txt'
+Stored hashes for 'original.txt' in hashes.json
+Created 'tampered.txt' (with a slight modification)
+
+--- Verifying integrity of 'original.txt' ---
+Result: PASSED (All computed hashes match stored hashes)
+
+--- Verifying integrity of 'tampered.txt' ---
+Mismatch found for MD5:
+  Stored:   [MD5 hash of original.txt]
+  Computed: [MD5 hash of tampered.txt]
+Mismatch found for SHA1:
+  Stored:   [SHA1 hash of original.txt]
+  Computed: [SHA1 hash of tampered.txt]
+Mismatch found for SHA256:
+  Stored:   [SHA256 hash of original.txt]
+  Computed: [SHA256 hash of tampered.txt]
+Result: FAILED (Hash mismatch detected for: md5, sha1, sha256)
+
+--- Verifying integrity of 'non_existent_file.txt' ---
+Result: FAILED (File does not exist)
